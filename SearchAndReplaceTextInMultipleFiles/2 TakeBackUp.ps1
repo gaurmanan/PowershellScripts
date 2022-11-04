@@ -6,11 +6,12 @@ $content = Get-Content ".\file.txt"
 ''>BackupLog.txt
 foreach ($i in $content)
 {
-    if($i -ne ''){
+    if($i.Trim() -ne ''){
+    if(Test-Path -Path $i -PathType leaf){
 	$j = $i -replace [regex]::Escape($basefolder),$backupfolder 
     "Base: "+$i>>BackupLog.txt
     "Backup: "+$j>>BackupLog.txt
     $path = Split-Path -Path $j
     if(-not (Test-Path $path)) {New-Item $path -ItemType Directory}
-    Copy-Item -path $i -Destination $j -force}
+    Copy-Item -path $i -Destination $j -force}}
 }

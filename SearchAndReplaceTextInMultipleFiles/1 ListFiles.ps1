@@ -3,10 +3,7 @@ $basefolder = read-host 'Input base folder path: '
 $pattern = read-host 'Input the file pattern you are looking for: '
 
 
-foreach ($i in (Get-ChildItem -Path $basefolder -Recurse))
+foreach ($i in (Get-ChildItem -Path $basefolder -Recurse -Include ('*'+$pattern+'*') -File))
 {
-	if ($i.Name -match $pattern)
-	{
-		""+$i.FullName >> file.txt
-	}
+        ""+$i.FullName >> file.txt
 }
