@@ -1,8 +1,15 @@
-﻿$value1 = read-host 'Input the string you wish to replace: '
-$value2 = read-host 'Input the replacement sting: '
+﻿''>file.txt
+$basefolder = read-host 'Input base folder path: '
+$pattern = read-host 'Input the file pattern you are looking for: '
+
+
+foreach ($i in (Get-ChildItem -Path $basefolder -Recurse -Include ('*'+$pattern+'*') -File))
+{
+        ""+$i.FullName >> file.txt
+}
 
 $content = Get-Content ".\file.txt"
-'' > ReplacementLog.txt
+'' > Occourance.txt
 $number = 0
 foreach ($i in $content)
 {
@@ -21,3 +28,5 @@ foreach ($i in $content)
         }
     }}
 }
+
+'Total Occourances: '+$number > SearchLog.txt
