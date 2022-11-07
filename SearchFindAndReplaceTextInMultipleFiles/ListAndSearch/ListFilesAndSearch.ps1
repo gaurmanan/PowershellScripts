@@ -10,7 +10,7 @@ foreach ($i in (Get-ChildItem -Path $basefolder -Recurse -Include ('*'+$pattern+
 }
 
 $content = Get-Content ".\file.txt"
-'' > Occourance.txt
+'' > SearchedLog.txt
 $number = 0
 foreach ($i in $content)
 {
