@@ -1,6 +1,7 @@
 ﻿''>file.txt
 $basefolder = read-host 'Input base folder path: '
 $pattern = read-host 'Input the file pattern you are looking for: '
+$value1 = read-host "Please input the string you are trying to search: "
 
 
 foreach ($i in (Get-ChildItem -Path $basefolder -Recurse -Include ('*'+$pattern+'*') -File))
@@ -19,12 +20,11 @@ foreach ($i in $content)
         $count = $matches.length
         if($count -gt 0){
         $number = $number+1
-	    ((Get-Content -path $i -Raw) -replace $value1,$value2|Set-Content -Path $i -force)
-        '=====================================================================================' >> ReplacementLog.txt
-        ''+$number+'. Path:'+$i >> ReplacementLog.txt
-        'Total Replacements: '+$count >> ReplacementLog.txt
-        'Changes: ' >> ReplacementLog.txt
-        $matches >> ReplacementLog.txt
+        '=====================================================================================' >> SearchedLog.txt
+        ''+$number+'. Path:'+$i >> SearchedLog.txt
+        'Total Replacements: '+$count >> SearchedLog.txt
+        'Changes: ' >> SearchedLog.txt
+        $matches >> SearchedLog.txt
         }
     }}
 }
