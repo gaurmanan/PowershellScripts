@@ -22,8 +22,8 @@ foreach ($i in $content)
         $number = $number+1
         '=====================================================================================' >> SearchedLog.txt
         ''+$number+'. Path:'+$i >> SearchedLog.txt
-        'Total Occourances: '+$count >> SearchedLog.txt
-        'Changes: ' >> SearchedLog.txt
+        'In file Occourances Count: '+$count >> SearchedLog.txt
+        'Occourances: ' >> SearchedLog.txt
         $matches >> SearchedLog.txt
         }
     }}
