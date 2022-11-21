@@ -1,4 +1,4 @@
-﻿Write-Host "This script compares all the files and folders and returns list of differences, if any." -Foregroundcolor Yellow
+﻿Write-Host "This script returns all directories and files with checksum in a given parent directory." -Foregroundcolor Yellow
 
 if(Test-Path ".\CompareResult.txt" -PathType Leaf){Remove-Item ".\CompareResult.txt" -Force}
 
