@@ -1,8 +1,8 @@
-Write-Host "This script compares all the files and folders and returns list of differences, if any." -Foregroundcolor Yellow
+Write-Host "This script returns folder list and file list along with checksum within a base folder." -Foregroundcolor Yellow
 
 if(Test-Path ".\CompareResult.txt" -PathType Leaf){Remove-Item ".\CompareResult.txt" -Force}
 
-$path1 = Read-Host "Input basepath for the first folder"
+$path1 = Read-Host "Input basepath for folder"
 
 if(Test-Path $path1 -PathType Container)
 {
