@@ -6,7 +6,7 @@ $path1 = Read-Host "Input basepath for the first folder"
 
 if(Test-Path $path1 -PathType Container)
 {
-    Write-Host "Comparing..." -Foregroundcolor Red
+    Write-Host "Processing..." -Foregroundcolor Red
     
     $path1Length = $path1.Length
     
@@ -25,7 +25,7 @@ if(Test-Path $path1 -PathType Container)
     ======================================================================" >> ".\CompareResult.txt"
     foreach($directory in $directories1)
     {
-        $directory.Substring($path2Length,$directory.Length-$path1Length) >> ".\CompareResult.txt"
+        $directory.Substring($path1Length,$directory.Length-$path1Length) >> ".\CompareResult.txt"
     }
     
     "
@@ -34,7 +34,7 @@ if(Test-Path $path1 -PathType Container)
     ======================================================================" >> ".\CompareResult.txt"
     foreach($file in $files1)
     {
-        $file.Substring($path2Length,$file.Length-$path1Length) +':'+ (Get-FileHash -Path $file -Algorithm MD5).hash >> ".\CompareResult.txt"
+        $file.Substring($path1Length,$file.Length-$path1Length) +':'+ (Get-FileHash -Path $file -Algorithm MD5).hash >> ".\CompareResult.txt"
     }
     Write-Host "Done." -Foregroundcolor Green
 }
