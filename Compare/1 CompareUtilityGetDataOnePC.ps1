@@ -21,17 +21,17 @@ if(Test-Path $path1 -PathType Container)
     
     $files1 = (Get-ChildItem -path $path1 -Recurse -File).FullName
     
-    "Folders list:
-    ======================================================================" >> ".\CompareResult.txt"
+"Folders list:
+======================================================================" >> ".\CompareResult.txt"
     foreach($directory in $directories1)
     {
         $directory.Substring($path1Length,$directory.Length-$path1Length) >> ".\CompareResult.txt"
     }
     
-    "
-    
-    Files with MD5 checksum:
-    ======================================================================" >> ".\CompareResult.txt"
+"
+
+Files with MD5 checksum:
+======================================================================" >> ".\CompareResult.txt"
     foreach($file in $files1)
     {
         $file.Substring($path1Length,$file.Length-$path1Length) +':'+ (Get-FileHash -Path $file -Algorithm MD5).hash >> ".\CompareResult.txt"
